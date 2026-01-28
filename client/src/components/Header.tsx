@@ -17,10 +17,10 @@ const projectCategories = [
 ];
 
 interface HeaderProps {
-  transparent?: boolean;
+  // Header is now always white background, separated from carousel
 }
 
-export default function Header({ transparent = false }: HeaderProps) {
+export default function Header({ }: HeaderProps = {}) {
   const dynamicContent = getDynamicContent();
   const { navLinks, logo } = dynamicContent;
   const [activeHash, setActiveHash] = useState(window.location.hash || "#home");
@@ -36,17 +36,18 @@ export default function Header({ transparent = false }: HeaderProps) {
   }, []);
 
   return (
-    <header className={`flex justify-between items-center px-4 sm:px-10 ${transparent ? 'fixed top-0 left-0 right-0 z-50' : 'sticky top-0 z-50 bg-white shadow-md py-2'}`}>
-      <div className="flex items-center gap-4 sm:gap-12">
-        <a href="/">
-          <ImageWithFallback
-            src={logo}
-            alt="Logo"
-            className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] object-contain"
-            fallbackType="logo"
-          />
-        </a>
-        <nav className="hidden md:flex gap-10 font-semibold items-center">
+    <header className="sticky top-0 z-50 bg-white shadow-md py-2">
+      <div className="flex justify-between items-center px-4 sm:px-10">
+        <div className="flex items-center gap-4 sm:gap-12">
+          <a href="/">
+            <ImageWithFallback
+              src={logo}
+              alt="Logo"
+              className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] object-contain"
+              fallbackType="logo"
+            />
+            </a>
+          <nav className="hidden md:flex gap-10 font-semibold items-center">
           {navLinks.map(({ to, label, id }) => (
             id === "projects" ? (
               // Projects with dropdown submenu
@@ -66,7 +67,7 @@ export default function Header({ transparent = false }: HeaderProps) {
                       window.location.hash = to;
                     }
                   }}
-                  className={`transition flex items-center gap-1 py-2 ${
+                  className={`transition flex items-center gap-1 ${
                     activeHash === to
                       ? "text-[#830f00] border-b-2 border-[#830f00]"
                       : "text-[#6e4e3a] hover:text-[#830f00]"
@@ -191,6 +192,7 @@ export default function Header({ transparent = false }: HeaderProps) {
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+      </div>
       </div>
 
       {/* Mobile Menu */}

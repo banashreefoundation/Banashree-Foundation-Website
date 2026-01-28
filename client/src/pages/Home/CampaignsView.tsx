@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Campaign } from "../../services/apiService";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import { SERVER_BASE } from "@/utils/imageApi";
-import SectionHeroCarousel from "./SectionHeroCarousel";
 import {
   Dialog,
   DialogContent,
@@ -103,11 +102,6 @@ export default function CampaignsView({
 
     return (
         <div className="bg-white">
-            {/* Hero Section with Header Overlay */}
-            <div className="relative w-full overflow-hidden">
-                <SectionHeroCarousel section="campaigns" />
-            </div>
-            
             {/* Campaigns Content */}
             <div className="bg-[#f0f9ff] py-16">
                 <div className="max-w-7xl mx-auto px-4">

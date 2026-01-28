@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Program } from "../../services/apiService";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import { SERVER_BASE } from "@/utils/imageApi";
-import SectionHeroCarousel from "./SectionHeroCarousel";
 
 type ViewMode = 'card' | 'list';
 
@@ -105,11 +104,6 @@ export default function ProgramsView({
 
   return (
     <div className="bg-white">
-      {/* Hero Section with Header Overlay */}
-      <div className="relative">
-        <SectionHeroCarousel section="programs" />
-      </div>
-      
       {/* Programs Content */}
       <div className="bg-[#fff5f5] py-16">
         <div className="max-w-7xl mx-auto px-4">

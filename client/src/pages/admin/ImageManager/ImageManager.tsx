@@ -58,6 +58,8 @@ const ImageManager: React.FC = () => {
   const [importDialogOpen, setImportDialogOpen] = useState(false);
   const [defaultImagesInfo, setDefaultImagesInfo] = useState<any>(null);
   const [importing, setImporting] = useState(false);
+  const [previewDialogOpen, setPreviewDialogOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState<Image | null>(null);
   
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -487,7 +489,14 @@ const ImageManager: React.FC = () => {
                 paginatedImages.map((image) => (
                 <tr key={image._id}>
                   <td>
-                    <div className="image-preview">
+                    <div 
+                      className="image-preview" 
+                      onClick={() => {
+                        setPreviewImage(image);
+                        setPreviewDialogOpen(true);
+                      }}
+                      style={{ cursor: 'pointer' }}
+                    >
                       <img src={`http://localhost:4001${image.url}`} alt={image.alt || image.name} />
                     </div>
                   </td>
@@ -947,6 +956,69 @@ const ImageManager: React.FC = () => {
               disabled={importing || (defaultImagesInfo && defaultImagesInfo.canImport === 0)}
             >
               {importing ? 'Importing...' : `Import ${defaultImagesInfo?.canImport || 0} Images`}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Image Preview Modal */}
+      <Dialog open={previewDialogOpen} onOpenChange={setPreviewDialogOpen}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle>Image Preview</DialogTitle>
+            <DialogDescription>
+              {previewImage?.name}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            {/* Image Preview */}
+            <div className="flex justify-center items-center bg-gray-100 rounded-lg p-4 min-h-[400px]">
+              {previewImage && (
+                <img 
+                  src={`http://localhost:4001${previewImage.url}`} 
+                  alt={previewImage.alt || previewImage.name}
+                  className="max-w-full max-h-[600px] object-contain"
+                />
+              )}
+            </div>
+            
+            {/* Image Details */}
+            {previewImage && (
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="font-semibold">Filename:</span> {previewImage.filename}
+                </div>
+                <div>
+                  <span className="font-semibold">Category:</span> <span className="category-badge">{previewImage.category}</span>
+                </div>
+                <div>
+                  <span className="font-semibold">Key:</span> {previewImage.key}
+                </div>
+                <div>
+                  <span className="font-semibold">Size:</span> {formatFileSize(previewImage.size)}
+                </div>
+                <div>
+                  <span className="font-semibold">Dimensions:</span> {previewImage.width && previewImage.height ? `${previewImage.width} × ${previewImage.height}` : 'N/A'}
+                </div>
+                <div>
+                  <span className="font-semibold">Type:</span> {previewImage.mimeType}
+                </div>
+                {previewImage.description && (
+                  <div className="col-span-2">
+                    <span className="font-semibold">Description:</span> {previewImage.description}
+                  </div>
+                )}
+                {previewImage.alt && (
+                  <div className="col-span-2">
+                    <span className="font-semibold">Alt Text:</span> {previewImage.alt}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setPreviewDialogOpen(false)}>
+              Close
             </Button>
           </DialogFooter>
         </DialogContent>

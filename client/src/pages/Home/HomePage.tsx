@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Header from "@/components/Header";
 import LandingPage from "./LandingPage"; // adjust path if needed
 import AboutAndProgramsSection from "./AboutPrograms";
 import OurImpact from "./OurImpact";
@@ -71,12 +72,19 @@ const HomePage = () => {
   const isProgramsProjectPage = activeSection === "programs" || activeSection === "projects" || activeSection === "events" || activeSection === "campaigns"
   const isContribute = activeSection === "contribute"
   const isContact = activeSection === "contactUs"
+  const showHeroSection = !isContribute && !isContact; // Don't show hero for contribute and contact pages
+  
   return (
     <div className="bg-white">
-      {/* Header and Hero Section */}
-      <div id="home">
-        <LandingPage showOnlyHeaderImage={isProgramsProjectPage} activeSectionIs={activeSection} />
-      </div>
+      {/* Header - Now separate from carousel */}
+      <Header />
+      
+      {/* Hero Section / Carousel - Hidden for Contribute and Contact pages */}
+      {showHeroSection && (
+        <div id="home">
+          <LandingPage showOnlyHeaderImage={isProgramsProjectPage} activeSectionIs={activeSection} />
+        </div>
+      )}
 
       {/* Conditional rendering based on active section */}
       <div className={isContribute ? 'block' : 'hidden'}>
