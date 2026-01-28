@@ -29,7 +29,7 @@ http://localhost:5000/
 
 
 cd AS-Customer-Banashree-Digital 
-(base) sambasiva@ASAMBASI-M-WRHX AS-Customer-Banashree-Digital % docker-compose up -d   
+ docker-compose up -d   
 
 ## Swagger API Documentation 
 ### To generate swagger API documentation use the following step -
