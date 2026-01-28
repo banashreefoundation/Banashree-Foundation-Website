@@ -1,0 +1,43 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="eventBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#eff6ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dbeafe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#eventBg)"/>
+  
+  <!-- Calendar icon -->
+  <g transform="translate(150, 80)">
+    <rect x="0" y="10" width="100" height="90" rx="6" fill="#3b82f6" opacity="0.3"/>
+    <rect x="0" y="10" width="100" height="20" rx="6" fill="#1e40af" opacity="0.4"/>
+    <rect x="20" y="0" width="6" height="20" rx="3" fill="#60a5fa" opacity="0.5"/>
+    <rect x="74" y="0" width="6" height="20" rx="3" fill="#60a5fa" opacity="0.5"/>
+    
+    <!-- Calendar grid -->
+    <circle cx="20" cy="50" r="4" fill="#60a5fa" opacity="0.5"/>
+    <circle cx="40" cy="50" r="4" fill="#60a5fa" opacity="0.5"/>
+    <circle cx="60" cy="50" r="4" fill="#60a5fa" opacity="0.5"/>
+    <circle cx="80" cy="50" r="4" fill="#60a5fa" opacity="0.5"/>
+    <circle cx="20" cy="70" r="4" fill="#60a5fa" opacity="0.5"/>
+    <circle cx="40" cy="70" r="4" fill="#60a5fa" opacity="0.5"/>
+    <circle cx="60" cy="70" r="4" fill="#3b82f6" opacity="0.7"/>
+    <circle cx="80" cy="70" r="4" fill="#60a5fa" opacity="0.5"/>
+  </g>
+  
+  <!-- People icon -->
+  <g transform="translate(270, 120)">
+    <circle cx="-10" cy="0" r="8" fill="#3b82f6" opacity="0.4"/>
+    <circle cx="10" cy="0" r="8" fill="#3b82f6" opacity="0.4"/>
+    <path d="M-18,20 Q-10,12 -10,12 Q-10,12 -2,20 L-18,20 Z" fill="#60a5fa" opacity="0.4"/>
+    <path d="M2,20 Q10,12 10,12 Q10,12 18,20 L2,20 Z" fill="#60a5fa" opacity="0.4"/>
+  </g>
+  
+  <text x="50%" y="88%" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#1e40af" text-anchor="middle">
+    Event Image
+  </text>
+  <text x="50%" y="94%" font-family="Arial, sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" opacity="0.7">
+    Join Us Together
+  </text>
+</svg>

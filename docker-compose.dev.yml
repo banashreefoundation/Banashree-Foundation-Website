@@ -1,0 +1,48 @@
+services:
+  banashree-server:
+    container_name: banashree-server-dev
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./server:/home/node/app
+      - /home/node/app/node_modules
+      - uploads-data:/home/node/app/uploads
+      - backups-data:/home/node/app/backups
+    ports:
+      - "4001:4001"
+    command: npm run dev
+    environment:
+      NODE_ENV: development
+      MONGO_URL: mongodb://mongodb:27017/banashree-foundation-db
+    depends_on:
+      - mongodb
+
+  banashree-client:
+    container_name: banashree-client-dev
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: npm run dev
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - banashree-server
+
+  mongodb:
+    container_name: mongodb-dev
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data-dev:/data/db
+
+volumes:
+  mongo-data-dev:
+  uploads-data:
+  backups-data:

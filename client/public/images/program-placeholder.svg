@@ -1,0 +1,37 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="progBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#eff6ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dbeafe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#progBg)"/>
+  
+  <!-- Book/Education icon -->
+  <g transform="translate(170, 90)">
+    <rect x="0" y="0" width="60" height="70" rx="4" fill="#3b82f6" opacity="0.3"/>
+    <rect x="5" y="5" width="50" height="60" rx="2" fill="#60a5fa" opacity="0.4"/>
+    <line x1="15" y1="20" x2="45" y2="20" stroke="#1e40af" stroke-width="2" opacity="0.5"/>
+    <line x1="15" y1="30" x2="45" y2="30" stroke="#1e40af" stroke-width="2" opacity="0.5"/>
+    <line x1="15" y1="40" x2="35" y2="40" stroke="#1e40af" stroke-width="2" opacity="0.5"/>
+  </g>
+  
+  <!-- People/Community icon -->
+  <g transform="translate(130, 100)">
+    <circle cx="0" cy="0" r="8" fill="#3b82f6" opacity="0.4"/>
+    <path d="M-10,15 Q-10,8 0,8 Q10,8 10,15 L-10,15 Z" fill="#60a5fa" opacity="0.4"/>
+  </g>
+  
+  <g transform="translate(270, 100)">
+    <circle cx="0" cy="0" r="8" fill="#3b82f6" opacity="0.4"/>
+    <path d="M-10,15 Q-10,8 0,8 Q10,8 10,15 L-10,15 Z" fill="#60a5fa" opacity="0.4"/>
+  </g>
+  
+  <text x="50%" y="88%" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#1e40af" text-anchor="middle">
+    Program Image
+  </text>
+  <text x="50%" y="94%" font-family="Arial, sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" opacity="0.7">
+    Empowering Communities
+  </text>
+</svg>

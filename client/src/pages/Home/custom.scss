@@ -1,0 +1,19 @@
+/* index.css */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+html {
+	scroll-behavior: smooth; 
+
+}
+
+.group:hover .circle {
+  transform: translate(-30%, -50%) scale(1.05);
+  transition: transform .2s ease;
+}

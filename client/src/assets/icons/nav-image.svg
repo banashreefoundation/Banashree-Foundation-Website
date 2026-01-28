@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
+  <g id="image-icon" transform="translate(0 0)">
+    <rect width="27" height="27" fill="none"/>
+    <g transform="translate(3 3)">
+      <!-- Photo frame -->
+      <rect x="0" y="0" width="21" height="21" rx="2" fill="none" stroke="#a1756e" stroke-width="1.5"/>
+      <!-- Mountain/landscape icon -->
+      <path d="M 3 18 L 8 11 L 12 16 L 16 9 L 21 18 Z" fill="#a1756e" opacity="0.7"/>
+      <!-- Sun/circle -->
+      <circle cx="6" cy="6" r="2" fill="#a1756e"/>
+    </g>
+  </g>
+</svg>

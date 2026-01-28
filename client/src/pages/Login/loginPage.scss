@@ -1,0 +1,360 @@
+.login-bg {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: transparent url('../../assets/images/Group\ 10256@2x.png') 0% 0% no-repeat padding-box;
+    background-size: cover;
+    opacity: 1;
+}
+
+.login-box {
+    width: 1232px;
+    height: 643px;
+    margin: 0 auto;
+    position: relative;
+    top: 163px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.login-logo-box {
+    width: 596px;
+    height: 643px;
+
+    img {
+        position: relative;
+        top: 25px;
+        left: 37.16px;
+    }
+}
+
+.login-div {
+    width: 530px;
+    height: 580px;
+    position: relative;
+    left: 105px;
+    top: 63px;
+}
+
+.login-text {
+    width: 110px;
+    height: 56px;
+    text-align: center;
+    font-size: 40px;
+    font-family: Poppins-Bold, sans-serif;
+    letter-spacing: 0px;
+    color: #10151E;
+    opacity: 1;
+}
+
+.login-text-description {
+    top: 19px;
+    position: relative;
+    left: 0px;
+    width: 497px;
+    height: 28px;
+    text-align: left;
+    letter-spacing: 0px;
+
+    .desc1 {
+        color: #480900;
+        font-family: Poppins-Medium, sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .desc2 {
+        color: #8B8B8B;
+        font-family: Poppins-Regular, sans-serif;
+        font-size: 20px;
+    }
+}
+
+.login-form-div {
+    position: relative;
+    top: 80px;
+}
+
+.email-container {
+    width: 360px;
+    height: 73px;
+
+    .email-label {
+        width: 54px;
+        height: 25px;
+        font-size: 18px;
+        text-align: left;
+        font-family: "CiscoSans-Medium", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #212529;
+        opacity: 1;
+    }
+
+    .email-input {
+        width: 360px;
+        height: 41px;
+        position: relative;
+        top: 7px;
+
+        input {
+            border: 1px solid #B4B4B4;
+            width: 100%;
+            padding-left: 15.76px;
+            padding-top: 9px;
+            padding-bottom: 7px;
+            height: 100%;
+        }
+    }
+}
+
+.password-container {
+    width: 360px;
+    height: 73px;
+    position: relative;
+    top: 32px;
+
+    .password-label {
+        width: 54px;
+        height: 25px;
+        font-size: 18px;
+        text-align: left;
+        font-family: "CiscoSans-Medium", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #212529;
+        opacity: 1;
+    }
+
+    .password-input {
+        width: 360px;
+        height: 41px;
+        position: relative;
+        top: 7px;
+
+        input {
+            border: 1px solid #B4B4B4;
+            width: 100%;
+            height: 100%;
+            padding-left: 15.76px;
+            padding-top: 9px;
+            padding-bottom: 7px;
+        }
+    }
+}
+
+.login-button {
+    top: 80px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    width: 360px;
+    color: #F7F6F6;
+    height: 41px;
+    font-family: "CiscoSans-Medium", sans-serif;
+    background: #480900 0% 0% no-repeat padding-box;
+    text-transform: capitalize;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.register-div {
+    position: relative;
+    top: 122px;
+
+    .desc1 {
+        color: #480900;
+        font-family: Poppins-Medium, sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .desc2 {
+        color: #8B8B8B;
+        font-family: Poppins-Regular, sans-serif;
+        font-size: 20px;
+    }
+}
+
+.footer-login-div {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+
+    .left-foot-text {
+        width: 378px;
+        margin-left: 45px;
+        height: 28px;
+        text-align: left;
+        font-family: Poppins-Medium, sans-serif;
+        font-size: 20px;
+        letter-spacing: 0px;
+        color: #480900;
+        opacity: 1;
+    }
+
+    .right-foot-text {
+        width: 550px;
+        margin-left: 45px;
+        height: 28px;
+        text-align: left;
+        font-family: Poppins-Medium, sans-serif;
+        font-size: 20px;
+        letter-spacing: 0px;
+        color: #480900;
+        position: absolute;
+        right: 0;
+        opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .login-box {
+        width: 90%;
+        height: auto;
+        top: 100px;
+    }
+
+    .login-logo-box {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    .login-div {
+        width: 80%;
+        left: 10%;
+        top: 40px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .login-box {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .login-logo-box img {
+        width: 70%;
+        top: 0;
+        left: 0;
+    }
+
+    .login-div {
+        width: 100%;
+        left: 0;
+        text-align: center;
+    }
+
+    .login-text-description {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .login-box {
+        width: 90%;
+        height: auto;
+        top: 100px;
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .login-logo-box {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    .login-logo-box img {
+        top: 0;
+        left: 0;
+        max-width: 80%;
+    }
+
+    .login-div {
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 20px;
+        padding: 0 20px;
+    }
+
+    .login-text {
+        font-size: 30px;
+        width: 100%;
+    }
+
+    .login-text-description {
+        width: 100%;
+        text-align: center;
+    }
+
+    .login-form-div {
+        top: 40px;
+    }
+
+    .email-container, .password-container {
+        width: 100%;
+    }
+
+    .email-input input, .password-input input {
+        width: 100%;
+    }
+
+    .login-button {
+        width: 100%;
+        top: 50px;
+    }
+
+    .register-div {
+        top: 80px;
+        text-align: center;
+    }
+
+    .footer-login-div {
+        bottom: 20px;
+        text-align: center;
+    }
+
+    .left-foot-text, .right-foot-text {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .login-box {
+        padding: 15px;
+    }
+
+    .login-logo-box img {
+        width: 50%;
+    }
+
+    .login-div {
+        top: 20px;
+    }
+
+    .email-container, .password-container, .login-button {
+        width: 100%;
+    }
+
+    .footer-login-div {
+        text-align: center;
+    }
+    
+    .left-foot-text, .right-foot-text {
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+}

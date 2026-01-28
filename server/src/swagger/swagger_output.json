@@ -1,0 +1,483 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API Documentation",
+    "description": "API documentation for the application",
+    "version": "1.0.0"
+  },
+  "host": "localhost:4001",
+  "basePath": "/",
+  "schemes": ["http"],
+  "tags": [
+    { "name": "Authentication", "description": "User authentication endpoints" },
+    { "name": "Admin", "description": "Admin management endpoints" },
+    { "name": "Users", "description": "User management endpoints" },
+    { "name": "Campaigns", "description": "Campaign-related endpoints" },
+    { "name": "Programs", "description": "Program-related endpoints" },
+    { "name": "Events", "description": "Event-related endpoints" },
+    { "name": "Projects", "description": "Project-related endpoints" }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": ["Authentication"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "example": "any" },
+                "email": { "example": "any" },
+                "password": { "example": "any" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Bad Request" }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Authentication"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": { "example": "any" },
+                "password": { "example": "any" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" }
+        }
+      }
+    },
+    "/me": {
+      "get": {
+        "tags": ["Authentication"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": ["Authentication"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/logoutall": {
+      "post": {
+        "tags": ["Authentication"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/admin/login": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/admin/addUser": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "description": "",
+        "responses": {
+          "201": { "description": "Created" }
+        }
+      }
+    },
+    "/campaigns": {
+      "get": {
+        "tags": ["Campaigns"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "post": {
+        "tags": ["Campaigns"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "campaignID": {
+                  "type": "string",
+                  "example": "4"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Support Education for Girls in Rural Bihar 2"
+                },
+                "tagline": {
+                  "type": "string",
+                  "example": "Empowering Girls Through Education for a Brighter Future 2"
+                },
+                "goal": {
+                  "type": "string",
+                  "example": "Raise INR 1,00,000 to provide tuition fees, uniforms, and books for 50 underprivileged girls."
+                },
+                "campaignStory": {
+                  "type": "string",
+                  "example": "In rural Bihar, many young girls are deprived of education due to financial constraints and societal barriers. The NGO ‘Shiksha Jyoti’ has been working to provide quality education to girls from marginalized communities, ensuring they have access to the resources needed to thrive."
+                },
+                "specificBreakdown": {
+                  "type": "string",
+                  "example": "- INR 40,000 for tuition fees for 50 students\n- INR 20,000 for uniforms and school supplies\n- INR 15,000 for textbooks and study materials\n- INR 25,000 for transportation and miscellaneous costs"
+                },
+                "impactOfContribution": {
+                  "type": "string",
+                  "example": "- Your support will help 50 girls receive uninterrupted education, empowering them to break free from societal constraints.\n- Educated girls are more likely to become financially independent, contribute to their families, and uplift their communities."
+                },
+                "timeline": {
+                  "type": "string",
+                  "example": "- Goal: Raise INR 1,00,000 by November 30th to ensure enrollment for the academic session beginning in December."
+                },
+                "beneficiaryInformation": {
+                  "type": "string",
+                  "example": "- Organization: Shiksha Jyoti NGO\n- Location: Rural Bihar, India\n- Background: Shiksha Jyoti has been working for over a decade to provide education to girls from underprivileged backgrounds."
+                },
+                "mediaUrl": {
+                  "type": "string",
+                  "example": "/images/campaign2.png"
+                },
+                "donateOption": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "campaignUpdates": {
+                  "type": "string",
+                  "example": "- November 1st: We’ve reached 30% of our goal! Thank you to all the supporters!\n- November 15th: The first batch of uniforms and books has been distributed to the students."
+                },
+                "shareOptions": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "endorsementsOrPartnerships": {
+                  "type": "string",
+                  "example": "- Testimonial: 'Education is the most powerful tool for social change. By supporting these girls, we are ensuring a brighter future for them and their communities.' – Dr. Asha Verma, Education Activist"
+                },
+                "isActive": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "description": "",
+        "responses": {
+          "201": { "description": "Created" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/campaigns/{id}": {
+      "get": {
+        "tags": ["Campaigns"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "put": {
+        "tags": ["Campaigns"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/programs": {
+      "get": {
+        "tags": ["Programs"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      },
+      "post": {
+        "tags": ["Programs"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Animal Welfare and Rescue 2"
+                },
+                "tagline": {
+                  "type": "string",
+                  "example": "Providing Care, Shelter, and Protection for Stray and Abandoned Animals 2"
+                },
+                "detailedDescription": {
+                  "type": "string",
+                  "example": "A dedicated initiative focused on rescuing, rehabilitating, and providing lifelong care to abandoned, injured, and stray animals. We aim to create a compassionate society where animals are treated with kindness and respect."
+                },
+                "goals": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": [
+                    "Rescue and rehabilitate stray and abandoned animals",
+                    "Provide medical care and shelter",
+                    "Promote awareness about animal welfare",
+                    "Encourage responsible pet ownership"
+                  ]
+                },
+                "media": {
+                  "type": "object",
+                  "properties": {
+                    "images": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "example": ["goshala1.jpg", "goshala2.jpg"]
+                    },
+                    "videos": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "example": ["goshala_intro.mp4"]
+                    },
+                    "gallery": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "example": ["goshala_gallery1.jpg", "goshala_gallery2.jpg"]
+                    }
+                  }
+                },
+                "metrics": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": [
+                    "500+ animals rescued",
+                    "300+ successful adoptions",
+                    "1000+ community members educated on animal welfare"
+                  ]
+                },
+                "projects": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": []
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Created" }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "tags": ["Events"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "post": {
+        "tags": ["Events"],
+        "description": "",
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Bad Request" }
+        }
+      }
+    },
+    "/projects": {
+      "get": {
+        "tags": ["Projects"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "post": {
+        "tags": ["Projects"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "projectid": {
+                  "type": "string",
+                  "example": "6"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Dog Rescue Center"
+                },
+                "initiative": {
+                  "type": "string",
+                  "example": "6790e51c9847871dfabbaf45"
+                },
+                "objective": {
+                  "type": "string",
+                  "example": "To provide shelter, medical care, and adoption opportunities for stray and injured dogs."
+                },
+                "description": {
+                  "type": "string",
+                  "example": "This project aims to create a safe haven for stray dogs in Bangalore, providing them with food, medical care, and a chance for adoption. Through this initiative, we also aim to raise awareness about responsible pet ownership and animal welfare."
+                },
+                "beneficiaries": {
+                  "type": "string",
+                  "example": "Stray and abandoned dogs in urban areas."
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string",
+                      "example": "Bangalore"
+                    },
+                    "state": {
+                      "type": "string",
+                      "example": "Karnataka"
+                    }
+                  }
+                },
+                "status": {
+                  "type": "string",
+                  "example": "In Progress"
+                },
+                "key_activities": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": [
+                    "Veterinary check-ups",
+                    "Shelter construction",
+                    "Adoption campaigns"
+                  ]
+                },
+                "expected_outcomes": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": [
+                    "Rehabilitate 50 stray dogs.",
+                    "Increase public awareness of pet adoption."
+                  ]
+                },
+                "collaborating_partners": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": [
+                    "XYZ Veterinary Clinic",
+                    "Local Animal Care NGOs"
+                  ]
+                },
+                "gallery": {
+                  "type": "string",
+                  "example": "Photo thumbnails of the project in action"
+                },
+                "get_involved": {
+                  "type": "string",
+                  "example": "Volunteer with us to assist in feeding, adoption events, or administrative work!"
+                },
+                "donate": {
+                  "type": "string",
+                  "example": "Support this project by contributing to our shelter fund."
+                },
+                "campaigns": {
+                  "type": "string",
+                  "example": "6746dbf5ea7dfb1c2067721a"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Created" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/projects/{id}": {
+      "get": {
+        "tags": ["Projects"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    }
+  }
+}

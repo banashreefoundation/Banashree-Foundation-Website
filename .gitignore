@@ -1,0 +1,110 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+jspm_packages/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build outputs
+dist/
+build/
+build/Release
+.vite/
+out
+
+# TypeScript cache
+server/tsconfig.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache directories
+.cache/
+.parcel-cache/
+.npm
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.nyc_output
+
+# Framework specific
+.next
+.nuxt
+.docusaurus
+.temp
+.vuepress/dist
+web_modules/
+.serverless/
+.fusebox/
+.dynamodb/
+
+# Testing
+coverage
+*.lcov
+.vscode-test
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+# Project specific
+uploads/
+*.uploaded
+backups/
+*.backup
+data/
+
+# SSL Certificates
+*.pem
+*.key
+*.crt
+client/nginx/certs/live/
+client/nginx/certs/renewal/
+
+# Build tools
+lib-cov
+.grunt
+bower_components
+.lock-wscript
+.node_repl_history
+*.tgz
+.yarn-integrity
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+.tern-port
+
+# Yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*

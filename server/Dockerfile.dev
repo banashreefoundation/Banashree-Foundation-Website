@@ -1,0 +1,22 @@
+# Server Dockerfile (development with hot-reload)
+FROM node:20.17.0-alpine
+
+WORKDIR /home/node/app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy default images from git to container
+COPY uploads ./default-uploads
+
+# Create uploads directory
+RUN mkdir -p /home/node/app/uploads
+
+# Source code will be mounted as volume
+# No need to copy source code here
+
+EXPOSE 4001
+
+# Copy default images to uploads folder if it's empty, then start dev server
+CMD sh -c "cp -n default-uploads/* /home/node/app/uploads/ 2>/dev/null || true && npm run dev"

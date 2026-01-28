@@ -1,0 +1,15 @@
+# Client Dockerfile (development with hot-reload)
+FROM node:20.17.0-alpine
+
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Source code will be mounted as volume
+# No need to copy source code here
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]

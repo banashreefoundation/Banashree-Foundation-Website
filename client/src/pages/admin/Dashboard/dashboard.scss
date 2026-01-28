@@ -1,0 +1,161 @@
+.home {
+    display: flex;
+  
+    .homeContainer {
+      flex: 6;
+  
+      .widgets,
+      .charts {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+      }
+  
+      .charts {
+        padding: 5px 20px;
+      }
+    }
+  }
+  .symbols-icon{
+    background: transparent url('../../../assets/icons/symbols.svg') 0% 0% no-repeat padding-box;
+    content: '';
+    display: block;
+    height: 61px;
+    width: 30px;
+  }
+  /* Add this to your global CSS file or in the <style> section */
+.table-row:nth-child(odd) {
+  background-color: #FDEBE8;
+}
+
+.table-row:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+.nav-dashboard-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-dashboard.svg') 0% 0% no-repeat padding-box;
+    height: 23px;
+    width: 21px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-dashboard-hover.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+
+.nav-add-icon{
+  background: transparent url('../../../assets/icons/nav-add.svg') 0% 0% no-repeat padding-box;
+  height: 21px;
+  width: 21px;
+  &:hover{
+    background: transparent url('../../../assets/icons/nav-add-hover.svg') 0% 0% no-repeat padding-box;
+  }
+}
+
+.nav-program-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-programs.svg') 0% 0% no-repeat padding-box;
+    height: 19px;
+    width: 18px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-program-hover.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-projects-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-projects.svg') 0% 0% no-repeat padding-box;
+    height: 19px;
+    width: 18px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-projects-hover.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-campaigns-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-campaigns.svg') 0% 0% no-repeat padding-box;
+    height: 21px;
+    width: 23px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-campaigns-hover.svg.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-events-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-events.svg') 0% 0% no-repeat padding-box;
+    height: 24px;
+    width: 26px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-events-hover.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-volunteer-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-volunteers.svg') 0% 0% no-repeat padding-box;
+    height: 24px;
+    width: 26px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-volunteers-hover.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-images-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-image.svg') 0% 0% no-repeat padding-box;
+    height: 24px;
+    width: 26px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-image-hover.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-help-support-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/help-question.svg') 0% 0% no-repeat padding-box;
+    height: 24px;
+    width: 26px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/help-question.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-logout-icon{
+  .icon{
+    background: transparent url('../../../assets/icons/nav-logout.svg') 0% 0% no-repeat padding-box;
+    height: 24px;
+    width: 26px;
+  }
+  &:hover{
+    .icon{
+      background: transparent url('../../../assets/icons/nav-logout.svg') 0% 0% no-repeat padding-box;
+    }
+  }
+}
+.nav-bg-image {
+  background: transparent url('../../../assets/images/nav-bg-image.svg') 0% 0% no-repeat padding-box;
+  background-size: cover;
+  background-position: center;
+  width: 240px;
+  height: 313px; 
+  position: absolute;
+  bottom: 0;
+}

@@ -1,0 +1,60 @@
+{
+  "defaults": {
+    "placeholder": "/images/placeholder.svg",
+    "avatar": "/images/avatar-placeholder.svg",
+    "logo": "/images/Banashree-Logo.png",
+    "program": "/images/program-placeholder.svg",
+    "project": "/images/project-placeholder.svg",
+    "event": "/images/event-placeholder.svg",
+    "campaign": "/images/campaign-placeholder.svg"
+  },
+  "header": {
+    "main": "Group 10401@2x.png",
+    "program": "Group 10416.png",
+    "line": "Group 10373.svg"
+  },
+  "logo": {
+    "main": "Banashree Logo - Transparent@2x.png",
+    "loginLogo": "login-logo-2x.png"
+  },
+  "hero": {
+    "carousel": "Rectangle 6753.svg"
+  },
+  "backgrounds": {
+    "children": "Group 10375.png",
+    "groupBg": "Group 10374.svg",
+    "rectBg": "Rectangle 6753.svg",
+    "greenBg": "Group 10393.png",
+    "redBg": "Group 10394.png",
+    "orangeBg": "Group 10395.png"
+  },
+  "empowerment": {
+    "woman": "Group 10397.svg",
+    "education": "Group 10347.svg",
+    "health": "Group 10396.svg"
+  },
+  "programs": {
+    "animalWelfare": "pexels-pranidchakan-boonrom-101111-1350563.png",
+    "elderCare": "pexels-kampus-7551581@2x.png",
+    "childCare": "pexels-rebecca-zaal-252062-764681.png",
+    "farmerEmpowerment": "pexels-equalstock-20527519.png",
+    "communityBuilding": "pexels-ahmed-akacha-3313934-9993428.png",
+    "waterConservation": "pexels-shally-imagery-473875988-30224434@2x.png"
+  },
+  "projects": {
+    "goshala": "pexels-leah-newhouse-50725-1449656.png",
+    "waterProject": "pexels-shally-imagery-473875988-30224434.png"
+  },
+  "events": {
+    "default1": "pexels-kampus-7551581@2x.png",
+    "default2": "pexels-rebecca-zaal-252062-764681.png",
+    "default3": "pexels-equalstock-20356942.png"
+  },
+  "other": {
+    "barCode": "bar_code.png",
+    "hubliNews": "hubli_news.jpg",
+    "smallGirl": "Group 10316@2x.png",
+    "boyHands": "Image 44@2x.png",
+    "userBackground": "user_background.png"
+  }
+}

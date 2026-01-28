@@ -1,0 +1,16 @@
+.group-bg{
+    background: transparent url('../../assets/images/group.png') 0% 0% no-repeat padding-box;
+    content: '';
+    display: block;
+  }
+
+.event-wrapper-card-outline{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000000F;
+  border-radius: 20px;
+}
+.event-card-outline{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 10px;
+}

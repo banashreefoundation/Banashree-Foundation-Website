@@ -1,0 +1,14 @@
+.MuiAutocomplete-root{
+    .MuiFormControl-root{
+        .MuiInputBase-root{
+            .MuiButtonBase-root{
+                border-color: #8B1201;
+                svg{
+                    path{
+                        fill: #8B1201;
+                    }
+                }
+            }
+        }
+    }
+}
