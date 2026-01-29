@@ -97,6 +97,19 @@ const Sidebar: React.FC = () => {
             <span className="nav-add-icon"></span>
           </div>
         </li>
+        {/* testimonials nav item */}
+        <li className="py-1">
+          <div className="flex items-center justify-between p-2 text-menu text-lg font-poppins-medium">
+            <Link
+              to="/testimonials"
+              className="flex items-center hover:text-menu-hover hover:font-poppins-semi-bold nav-volunteer-icon"
+            >
+              <span className="icon"></span>
+              <span className="ml-2">Testimonials</span>
+            </Link>
+            <span className="nav-add-icon"></span>
+          </div>
+        </li>
         {/* images nav item */}
         <li className="py-1">
           <div className="flex items-center justify-between p-2 text-menu text-lg font-poppins-medium">
