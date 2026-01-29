@@ -80,7 +80,6 @@ Thumbs.db
 # Project specific
 backups/
 *.backup
-data/
 
 # User uploaded files (runtime data - uploaded by users at runtime)
 # Keep default/sample images but ignore dynamically uploaded ones
