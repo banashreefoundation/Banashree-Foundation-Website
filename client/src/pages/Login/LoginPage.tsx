@@ -1,6 +1,8 @@
 import "./loginPage.scss";
 import {Form} from "./Loginform";
 import {LoginFooter} from "./LoginFooter";
+import loginLogo from "../../assets/images/login-logo-2x.png";
+
 const LoginPage = () => {
   return (
     <div className="h-screen">
@@ -10,7 +12,7 @@ const LoginPage = () => {
             <div className="flex">
               <div className="flex-none">
                 <div className="login-logo-box">
-                  <img src="src/assets/images/login-logo-2x.png"></img>
+                  <img src={loginLogo} alt="Banashree Foundation Logo" />
                 </div>
               </div>
               <div className="flex-none">

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import banashreeLogo from "../../../assets/images/Banashree-Logo.png";
 
 const Sidebar: React.FC = () => {
   // alert("sidebar")
@@ -8,8 +9,9 @@ const Sidebar: React.FC = () => {
         <img
           width="190"
           height="150"
-          src="../../../src/assets/images/Banashree-Logo.png"
-        ></img>
+          src={banashreeLogo}
+          alt="Banashree Foundation Logo"
+        />
       </Link>
       <ul className="pt-2 border-b pb-16">
         {/* <li>

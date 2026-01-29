@@ -1,5 +1,51 @@
 services:
-  server:
+  banashree-server:
+    container_name: banashree-server-prod
     build:
-      target: production
-    command: node build/index.js
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "4001:4001"
+    volumes:
+      - uploads-data:/home/node/app/uploads
+      - backups-data:/home/node/app/backups
+    environment:
+      NODE_ENV: production
+      MONGO_URL: mongodb://mongodb:27017/banashree-foundation-db
+      JWT_KEY: ${JWT_KEY:-your-super-secret-jwt-key-change-this-in-production}
+      JWT_EXPIRES_IN: 7d
+      PORT: 4001
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+  banashree-client:
+    container_name: banashree-client-prod
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Mount SSL certificates for production
+      - ./client/nginx/certs:/etc/letsencrypt:ro
+    depends_on:
+      - banashree-server
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+
+  mongodb:
+    container_name: mongodb-prod
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
+  uploads-data:
+  backups-data:
