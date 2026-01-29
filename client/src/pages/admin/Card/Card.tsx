@@ -4,6 +4,7 @@ import {
     CardDescription,
     CardTitle,
   } from "@/components/ui/card";
+import { arrow, programsIcon, projectsIcon, campaignsIcon, volunteerIcon } from "@/utils/icons";
   
   const Cards = () => {
     // Sample counts for demonstration
@@ -19,11 +20,11 @@ import {
             <Card className="max-w-xs">
             <CardContent className="flex items-center justify-center h-full p-4">
                 <div className="flex items-center space-x-4">
-                <img src="../../src/assets/images/programs.png" alt="icon" className="w-12 h-12" />
+                <img src={programsIcon} alt="icon" className="w-12 h-12" />
                 <div className="flex flex-col items-start space-y-2">
                     <CardTitle style={{ color: '#BE6458' }}>#Programs</CardTitle>
                     <CardDescription className="font-bold text-black">{counts.users}</CardDescription>
-                    <img src="../../src/assets/images/arrow.png" alt="icon" className="w-8 h-4 mt-2" />
+                    <img src={arrow} alt="icon" className="w-8 h-4 mt-2" />
                 </div>
                 </div>
             </CardContent>
@@ -32,11 +33,11 @@ import {
             <Card className="max-w-xs">
             <CardContent className="flex items-center justify-center h-full p-4">
             <div className="flex items-center space-x-4">
-                <img src="../../src/assets/images/projects.png" alt="icon" className="w-12 h-12" />
+                <img src={projectsIcon} alt="icon" className="w-12 h-12" />
                 <div className="flex flex-col items-start sspace-y-2">
                 <CardTitle style={{ color: '#BE6458' }}>#Projects</CardTitle>
                 <CardDescription className="font-bold text-black">{counts.orders}</CardDescription>
-                <img src="../../src/assets/images/arrow.png" alt="icon" className="w-8 h-4 mt-2" />
+                <img src={arrow} alt="icon" className="w-8 h-4 mt-2" />
                 </div>
                 </div>
             </CardContent>
@@ -44,11 +45,11 @@ import {
             <Card className="max-w-xs">
             <CardContent className="flex items-center justify-center h-full p-4">
             <div className="flex items-center space-x-4">
-                <img src="../../src/assets/images/campaigns.png" alt="icon" className="w-12 h-12" />
+                <img src={campaignsIcon} alt="icon" className="w-12 h-12" />
                 <div className="flex flex-col items-start space-y-2">
                 <CardTitle style={{ color: '#BE6458' }}>#Campaigns</CardTitle>
                 <CardDescription className="font-bold text-black">{counts.feedback}</CardDescription>
-                <img src="../../src/assets/images/arrow.png" alt="icon" className="w-8 h-4 mt-2" />
+                <img src={arrow} alt="icon" className="w-8 h-4 mt-2" />
                 </div>
                 </div>
             </CardContent>
@@ -57,11 +58,11 @@ import {
             <Card className="max-w-xs">
             <CardContent className="flex items-center justify-center h-full p-4">
             <div className="flex items-center space-x-4">
-                <img src="../../src/assets/images/volunteer.png" alt="icon" className="w-12 h-12" />
+                <img src={volunteerIcon} alt="icon" className="w-12 h-12" />
                 <div className="flex flex-col items-start space-y-2">
                 <CardTitle style={{ color: '#BE6458' }}>#Volunteers</CardTitle>
                 <CardDescription className="font-bold text-black">{counts.revenue}</CardDescription>
-                <img src="../../src/assets/images/arrow.png" alt="icon" className="w-8 h-4 mt-2" />
+                <img src={arrow} alt="icon" className="w-8 h-4 mt-2" />
                 </div>
                 </div>
             </CardContent>

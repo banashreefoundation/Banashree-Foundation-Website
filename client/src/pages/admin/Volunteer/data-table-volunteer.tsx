@@ -28,6 +28,7 @@ import {
   updateVolunteer,
 } from "../Common/volunteer";
 import { ToastContainer, toast } from "react-toastify";
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 
 interface DataTableProps {
   columns: ColumnDef<Volunteer>[];
@@ -237,7 +238,7 @@ export function DataTableVolunteer({
           <div className="flex justify-between items-center p-4">
             <div className="flex items-center space-x-2">
               <img
-                src="../src/assets/images/left-arrow.png"
+                src={leftArrow}
                 alt="Icon"
                 className="w-6 h-6"
               />
@@ -254,7 +255,7 @@ export function DataTableVolunteer({
                 onClick={() => handleOpenModal("isAddModalOpen", true)}
               >
                 <img
-                  src="../src/assets/images/plus-white.png"
+                  src={plusWhite}
                   className=" h-6 mr-2"
                 />
                 Add New

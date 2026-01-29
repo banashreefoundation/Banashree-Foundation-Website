@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 
 type PersonalDetails = {
   fullname: string;
@@ -91,17 +92,17 @@ const columns: ColumnDef<Volunteer, unknown>[] = [
         <div className="flex space-x-2">
           <img
             className="h-4 w-5"
-            src="../src/assets/images/view.png"
+            src={view}
             onClick={() => handleView(row.original)}
           ></img>
           <img
             className="h-4 w-4"
-            src="../src/assets/images/edit.png"
+            src={edit}
             onClick={() => handleEdit(row.original)}
           ></img>
           <img
             className="h-4 w-4"
-            src="../src/assets/images/delete.png"
+            src={deleteIcon}
             onClick={() => handleDelete(row.original)}
           ></img>
         </div>

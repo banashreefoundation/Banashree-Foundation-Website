@@ -7,6 +7,12 @@ import leftArrow from '../assets/images/left-arrow.png';
 import arrow from '../assets/images/arrow.png';
 import banashreeLogo from '../assets/images/Banashree-Logo.png';
 import loginLogo from '../assets/images/login-logo-2x.png';
+import programsIcon from '../assets/images/programs.png';
+import rightArrowWhite from '../assets/icons/right-arrow-white.svg';
+import eventGroup from '../assets/icons/event-group.png';
+import campaignsIcon from '../assets/images/campaigns.png';
+import projectsIcon from '../assets/images/projects.png';
+import volunteerIcon from '../assets/images/volunteer.png';
 
 // Export all icons
 export const icons = {
@@ -18,6 +24,12 @@ export const icons = {
   arrow,
   banashreeLogo,
   loginLogo,
+  programsIcon,
+  rightArrowWhite,
+  eventGroup,
+  campaignsIcon,
+  projectsIcon,
+  volunteerIcon,
 };
 
 // Individual exports for convenience
@@ -30,4 +42,10 @@ export {
   arrow,
   banashreeLogo,
   loginLogo,
+  programsIcon,
+  rightArrowWhite,
+  eventGroup,
+  campaignsIcon,
+  projectsIcon,
+  volunteerIcon,
 };

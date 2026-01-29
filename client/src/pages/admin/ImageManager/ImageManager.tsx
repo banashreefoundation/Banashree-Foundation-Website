@@ -20,6 +20,7 @@ import {
 import { Textarea } from '../../../components/ui/textarea';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './ImageManager.scss';
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4001/api/v1';
 
@@ -451,7 +452,7 @@ const ImageManager: React.FC = () => {
             Import Defaults
           </Button>
           <Button onClick={() => setUploadDialogOpen(true)} className="add-image-btn">
-            <img src="../src/assets/images/plus-white.png" alt="Add" className="btn-icon" />
+            <img src={plusWhite} alt="Add" className="btn-icon" />
             Add New Image
           </Button>
         </div>
@@ -527,13 +528,13 @@ const ImageManager: React.FC = () => {
                         className="action-btn edit-btn"
                         onClick={() => handleEdit(image)}
                       >
-                        <img src="../src/assets/images/edit.png" alt="Edit" className="action-icon" />
+                        <img src={edit} alt="Edit" className="action-icon" />
                       </button>
                       <button
                         className="action-btn delete-btn"
                         onClick={() => handleDelete(image._id)}
                       >
-                        <img src="../src/assets/images/delete.png" alt="Delete" className="action-icon" />
+                        <img src={deleteIcon} alt="Delete" className="action-icon" />
                       </button>
                     </div>
                   </td>

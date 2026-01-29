@@ -1,6 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
+import { view, edit, deleteIcon } from "@/utils/icons";
 import { ArrowUpDown } from "lucide-react";
 import { EyeIcon , TrashIcon} from '@heroicons/react/24/outline'; 
 
@@ -44,9 +45,9 @@ const columnsCamp: ColumnDef<Campaigns, unknown>[] = [
 
       return (
         <div className="flex space-x-2">
-             <img className="h-4 w-5" src="../src/assets/images/view.png" onClick={() => handleView(row.original)} ></img>
-          <img className="h-4 w-4" src="../src/assets/images/edit.png" onClick={() => handleView(row.original)} ></img>
-          <img className="h-4 w-4" src="../src/assets/images/delete.png" onClick={() => handleDelete(row.original)} ></img>
+             <img className="h-4 w-5" src={view} alt="View" onClick={() => handleView(row.original)} ></img>
+          <img className="h-4 w-4" src={edit} alt="Edit" onClick={() => handleView(row.original)} ></img>
+          <img className="h-4 w-4" src={deleteIcon} alt="Delete" onClick={() => handleDelete(row.original)} ></img>
         </div>
       );
     },

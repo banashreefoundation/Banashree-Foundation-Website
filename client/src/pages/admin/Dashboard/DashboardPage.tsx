@@ -22,6 +22,7 @@ import { DataTableProjects } from "../Projects/data-table-projects";
 import { DataTableEvents } from "../Events/data-table-events";
 import { Link } from "react-router-dom";
 import { DataTableContacts } from "../Contacts/data-table-contacts";
+import { arrow, rightArrowWhite, eventGroup } from "@/utils/icons";
 
 const DashboardPage: React.FC = () => {
   const location = useLocation();
@@ -265,7 +266,7 @@ const DashboardPage: React.FC = () => {
                       <button className="text-[#8B1201]">View All</button>
                     </Link>
                     <img
-                      src="../../src/assets/images/arrow.png"
+                      src={arrow}
                       alt="icon"
                       className="w-8 h-4 ml-2"
                     />
@@ -282,7 +283,7 @@ const DashboardPage: React.FC = () => {
                       <button className="text-[#8B1201]">View All</button>
                     </Link>
                     <img
-                      src="../../src/assets/images/arrow.png"
+                      src={arrow}
                       alt="icon"
                       className="w-8 h-4 ml-2"
                     />
@@ -303,7 +304,7 @@ const DashboardPage: React.FC = () => {
                       <button className="text-[#8B1201]">View All</button>
                     </Link>
                     <img
-                      src="../../src/assets/images/arrow.png"
+                      src={arrow}
                       alt="icon"
                       className="w-8 h-4 ml-2"
                     />
@@ -324,7 +325,7 @@ const DashboardPage: React.FC = () => {
                       <button className="text-[#8B1201]">View All</button>
                     </Link>
                     <img
-                      src="../../src/assets/images/arrow.png"
+                      src={arrow}
                       alt="icon"
                       className="w-8 h-4 ml-2"
                     />
@@ -354,7 +355,7 @@ const DashboardPage: React.FC = () => {
                 <div className="text-sm flex items-center font-poppins-medium pt-2">
                   <span>Read More</span>
                   <span className="pl-2">
-                    <img src="../../../src/assets/icons/right-arrow-white.svg"></img>
+                    <img src={rightArrowWhite}></img>
                   </span>
                 </div>
               </div>
@@ -362,7 +363,7 @@ const DashboardPage: React.FC = () => {
             <div className="event-wrapper-card-outline bg-card pt-4 mr-3 mt-2">
               <div className="flex flex-row pl-10 content-start">
                 <img
-                  src="../../../src/assets/icons/event-group.png"
+                  src={eventGroup}
                   width="91"
                   height="91"
                 ></img>
@@ -372,7 +373,7 @@ const DashboardPage: React.FC = () => {
                     134
                   </span>
                   <img
-                    src="../../../src/assets/images/arrow.png"
+                    src={arrow}
                     alt="icon"
                     width="28"
                     height="11"

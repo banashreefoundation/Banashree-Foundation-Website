@@ -29,6 +29,7 @@ import {
 import AddProgram from "./AddProgram";
 import ViewProgram from "./ViewProgram";
 import { Programs } from "./columns";
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 
 // Shared component
 const LoadingSpinner = () => (
@@ -243,7 +244,7 @@ export function DataTablePrograms({
           <div className="flex justify-between items-center p-4">
             <div className="flex items-center space-x-2">
               <img
-                src="../src/assets/images/left-arrow.png"
+                src={leftArrow}
                 alt="Icon"
                 className="w-6 h-6"
               />
@@ -260,7 +261,7 @@ export function DataTablePrograms({
                 onClick={() => handleOpenModal("isAddModalOpen", true)}
               >
                 <img
-                  src="../src/assets/images/plus-white.png"
+                  src={plusWhite}
                   className="w-6 h-6 mr-2"
                 />
                 Add New

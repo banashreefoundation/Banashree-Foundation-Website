@@ -25,6 +25,7 @@ import { Projects } from "./columns";
 
 import ShareddModal from "@/components/app/common/Modal";
 import ProjectComponent from "./child/ProjectComponent";
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 import {
   createProject,
   deleteProjectById,
@@ -249,7 +250,7 @@ export function DataTableProjects({
           <div className="flex justify-between items-center p-4">
             <div className="flex items-center space-x-2">
               <img
-                src="../src/assets/images/left-arrow.png"
+                src={leftArrow}
                 alt="Icon"
                 className="w-6 h-6"
               />
@@ -266,7 +267,7 @@ export function DataTableProjects({
                 className="flex items-center justify-center py-2 text-white rounded px-4 w-full btn"
               >
                 <img
-                  src="../src/assets/images/plus-white.png"
+                  src={plusWhite}
                   className="w-6 h-6 mr-2"
                 />
                 Add New

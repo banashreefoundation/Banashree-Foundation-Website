@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Contact } from "@/types/contact.types"; // Import from shared types
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 
 // Define a meta type for action handlers
 interface ColumnMeta {
@@ -162,14 +163,14 @@ const columnsContact: ColumnDef<Contact, unknown>[] = [
         <div className="flex space-x-2">
           <img
             className="h-4 w-5 cursor-pointer hover:opacity-75"
-            src="../src/assets/images/view.png"
+            src={view}
             alt="View"
             title="View Details"
             onClick={() => handleView(row.original)}
           />
           <img
             className="h-4 w-4 cursor-pointer hover:opacity-75"
-            src="../src/assets/images/delete.png"
+            src={deleteIcon}
             alt="Delete"
             title="Delete Contact"
             onClick={() => handleDelete(row.original)}

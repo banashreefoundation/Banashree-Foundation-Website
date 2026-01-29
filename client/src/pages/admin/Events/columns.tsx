@@ -2,6 +2,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
 import { useState } from "react";
+import { view, edit, deleteIcon } from "@/utils/icons";
 
 export type Event = {
   _id: string;
@@ -82,21 +83,21 @@ const columnsEvent: ColumnDef<Event, unknown>[] = [
         <div className="flex items-center space-x-2">
           <img
             className="h-4 w-5 cursor-pointer"
-            src="../src/assets/images/view.png"
+            src={view} alt="View"
             onClick={() => handleView(row.original)}
             alt="View"
             title="View Event"
           />
           <img
             className="h-4 w-4 cursor-pointer"
-            src="../src/assets/images/edit.png"
+            src={edit} alt="Edit"
             onClick={() => handleEdit(row.original)}
             alt="Edit"
             title="Edit Event"
           />
           <img
             className="h-4 w-4 cursor-pointer"
-            src="../src/assets/images/delete.png"
+            src={deleteIcon} alt="Delete"
             onClick={() => handleDelete(row.original)}
             alt="Delete"
             title="Delete Event"

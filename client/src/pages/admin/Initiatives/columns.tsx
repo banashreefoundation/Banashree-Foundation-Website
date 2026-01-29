@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { EyeIcon , TrashIcon, PencilIcon} from '@heroicons/react/24/outline'; 
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 
 export type Initiatives = {
   id: string;
@@ -53,9 +54,9 @@ const columnsInit: ColumnDef<Initiatives, unknown>[] = [
 
       return (
         <div className="flex space-x-2">
-            <img className="h-4 w-5" src="../src/assets/images/view.png" onClick={() => handleView(row.original)} ></img>
-          <img className="h-4 w-4" src="../src/assets/images/edit.png" onClick={() => handleView(row.original)} ></img>
-          <img className="h-4 w-4" src="../src/assets/images/delete.png" onClick={() => handleDelete(row.original)} ></img>
+            <img className="h-4 w-5" src={view} onClick={() => handleView(row.original)} ></img>
+          <img className="h-4 w-4" src={edit} onClick={() => handleView(row.original)} ></img>
+          <img className="h-4 w-4" src={deleteIcon} onClick={() => handleDelete(row.original)} ></img>
         </div>
       );
     },

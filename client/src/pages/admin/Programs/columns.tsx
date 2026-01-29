@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ColumnDef, RowData } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import { view, edit, deleteIcon } from "@/utils/icons";
 
 export type Programs = {
   goals: any;
@@ -58,19 +59,22 @@ const columnsPro: ColumnDef<Programs, unknown>[] = [
         <div className="flex space-x-2">
           <img
             className="h-4 w-5"
-            src="../src/assets/images/view.png"
+            src={view}
             onClick={() => handleView(row.original)}
-          ></img>
+            alt="View"
+          />
           <img
             className="h-4 w-4"
-            src="../src/assets/images/edit.png"
+            src={edit}
             onClick={() => handleEdit(row.original)}
-          ></img>
+            alt="Edit"
+          />
           <img
             className="h-4 w-4"
-            src="../src/assets/images/delete.png"
+            src={deleteIcon}
             onClick={() => handleDelete(row.original)}
-          ></img>
+            alt="Delete"
+          />
         </div>
       );
     },

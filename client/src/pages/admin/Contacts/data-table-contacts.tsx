@@ -23,6 +23,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ContactService from "@/services/contactService";
 import ViewContact from "./ViewContact";
 import { Contact } from "@/types/contact.types";
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 
 // Shared component
 const LoadingSpinner = () => (
@@ -202,7 +203,7 @@ export function DataTableContacts({
           <div className="flex justify-between items-center p-4">
             <div className="flex items-center space-x-2">
               <img
-                src="../src/assets/images/left-arrow.png"
+                src={leftArrow}
                 alt="Icon"
                 className="w-6 h-6"
               />

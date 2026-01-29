@@ -22,6 +22,7 @@ import { Event } from "./columns";
 import ShareddModal from "@/components/app/common/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import EventComponent from "./child/EventComponent";
+import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
 import {
   createEvent,
   deleteEventById,
@@ -216,7 +217,7 @@ export function DataTableEvents({
           <div className="flex justify-between items-center p-4">
             <div className="flex items-center space-x-2">
               <img
-                src="../src/assets/images/left-arrow.png"
+                src={leftArrow}
                 alt="Icon"
                 className="w-6 h-6"
               />
@@ -233,7 +234,7 @@ export function DataTableEvents({
                 onClick={() => handleOpenModal("isAddModalOpen", true)}
               >
                 <img
-                  src="../src/assets/images/plus-white.png"
+                  src={plusWhite}
                   className=" h-6 mr-2"
                 />
                 Add New
