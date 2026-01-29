@@ -6,7 +6,7 @@ import OurImpact from "./OurImpact";
 import ApiService, { Program, Project, Event, Campaign } from "../../services/apiService";
 
 import ScrollToTopButton from "./scrollToTopButton";
-// import TestimonialsSection from "./TestimonialsSection";
+import TestimonialsSection from "./TestimonialsSection";
 
 import NewsSection from "./NewsSection";
 import ProgramsView from "./ProgramsView";
@@ -120,9 +120,9 @@ const HomePage = () => {
           <div>
             <OurImpact />
           </div>
-          {/* <div>
+          {<div>
             <TestimonialsSection />
-          </div>   */}
+          </div> }
           {/* <div>
             <PartnersSection />
           </div> */}
