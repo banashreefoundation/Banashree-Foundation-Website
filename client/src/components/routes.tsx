@@ -2,6 +2,7 @@ import AdminPage from "@/pages/admin/AdminPage";
 import DashboardPage from "@/pages/admin/Dashboard/DashboardPage";
 import ImageManager from "@/pages/admin/ImageManager/ImageManager";
 import SeedDataView from "@/pages/admin/DataManagement/SeedDataView";
+import TestimonialsPage from "@/pages/admin/Testimonials/TestimonialsPage";
 import HomePage from "@/pages/Home/HomePage";
 import ProjectDetails from "@/pages/Home/ProjectDetails";
 import ProgramDetails from "@/pages/Home/ProgramDetails";
@@ -19,6 +20,7 @@ const adminPaths = [
   '/campaigns',
   '/volunteer',
   '/events',
+  '/testimonials',
   '/image-manager',
   '/data-management',
   '/inquiries'
@@ -95,7 +97,21 @@ const router = createBrowserRouter([
       },
     ],
   },
-  ...adminPaths.filter(path => path !== '/admin' && path !== '/image-manager' && path !== '/data-management').map(path => ({
+  {
+    path: "/testimonials",
+    element: (
+      <PrivateRoute>
+        <AdminPage />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <TestimonialsPage />
+      },
+    ],
+  },
+  ...adminPaths.filter(path => path !== '/admin' && path !== '/image-manager' && path !== '/data-management' && path !== '/testimonials').map(path => ({
     path,
     element: (
       <PrivateRoute>

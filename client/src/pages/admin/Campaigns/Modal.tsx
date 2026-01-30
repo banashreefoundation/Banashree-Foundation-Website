@@ -4,7 +4,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   content: {
-    username?: string;
+    title?: string;
     email?: string;
     donation?: string;
     status?: string;
@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {
   useEffect(() => {
     if (isOpen) {
       setFormValues({
-        name: content.username || "",
+        name: content.title || "",
         email: content.email || "",
         donation: content.donation || "",
         status: content.status || "",

@@ -9,6 +9,7 @@ import eventRoutes from './routes/eventRoutes';
 import projectRoutes from './routes/projectRoutes';
 import volunteerRoutes from './routes/volunteerRoutes';
 import contactRoutes from './routes/contactRoutes';
+import testimonialRoutes from './routes/testimonialRoutes';
 import imageRoutes from './routes/imageRoutes';
 import defaultImagesRoutes from './routes/defaultImagesRoutes';
 import seedRoutes from './routes/seedRoutes';
@@ -60,6 +61,7 @@ class App {
         this.app.use('/api/v1', projectRoutes);
         this.app.use('/api/v1', volunteerRoutes);
         this.app.use('/api/v1', contactRoutes);
+        this.app.use('/api/v1', testimonialRoutes);
         this.app.use('/api/v1/images', imageRoutes);
         this.app.use('/api/v1/default-images', defaultImagesRoutes);
         this.app.use('/api/v1', seedRoutes);
