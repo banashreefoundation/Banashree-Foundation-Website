@@ -1,53 +1,76 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
-import { ColumnDef } from "@tanstack/react-table";
-import { view, edit, deleteIcon } from "@/utils/icons";
+import { ColumnDef, RowData } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import { EyeIcon , TrashIcon} from '@heroicons/react/24/outline'; 
 
 export type Campaigns = {
+  goals: any;
+  media: null;
+  metrics: [string];
+  endorsement: string;
+  projects: never[];
   _id: string;
-  campaignID: string;
   title: string;
-  goal: string;
-  isActive: boolean;
+  tagline: string;
+  detailedDescription: string;
 };
 
 // Define a meta type for action handlers
 interface ColumnMeta {
   handleView: (rowData: Campaigns) => void;
   handleDelete: (rowData: Campaigns) => void;
+  handleEdit: (RowData: Campaigns) => void;
 }
 
 const columnsCamp: ColumnDef<Campaigns, unknown>[] = [
   {
-    accessorKey: "campaignID",
-    header: "Id",
-  },
-  {
     accessorKey: "title",
-    header: "Title",
+    header: ({ column }) => (
+      <Button
+        className="tableheadings"
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Program Name
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
   },
   {
-    accessorKey: "goal",
-    header: "Goal",
+    accessorKey: "tagline",
+    header: "Tagline",
   },
   {
-    accessorKey: "isActive",
-    header: "Status",
-    cell: ({ row }) => (row.original.isActive ? "Active" : "Inactive"),
+    accessorKey: "detailedDescription",
+    header: "Description",
   },
   {
-    id: 'actions',
-    header: 'Actions',
+    accessorKey: "goals",
+    header: "Goals",
+  },
+  {
+    id: "actions",
+    header: "Actions",
     cell: ({ row, column }) => {
-      const { handleView, handleDelete } = column.columnDef.meta as ColumnMeta; // Use type assertion
-
+      const { handleView, handleDelete, handleEdit } = column.columnDef
+        .meta as ColumnMeta;
       return (
         <div className="flex space-x-2">
-             <img className="h-4 w-5" src={view} alt="View" onClick={() => handleView(row.original)} ></img>
-          <img className="h-4 w-4" src={edit} alt="Edit" onClick={() => handleView(row.original)} ></img>
-          <img className="h-4 w-4" src={deleteIcon} alt="Delete" onClick={() => handleDelete(row.original)} ></img>
+          <img
+            className="h-4 w-5"
+            src="../src/assets/images/view.png"
+            onClick={() => handleView(row.original)}
+          ></img>
+          <img
+            className="h-4 w-4"
+            src="../src/assets/images/edit.png"
+            onClick={() => handleEdit(row.original)}
+          ></img>
+          <img
+            className="h-4 w-4"
+            src="../src/assets/images/delete.png"
+            onClick={() => handleDelete(row.original)}
+          ></img>
         </div>
       );
     },

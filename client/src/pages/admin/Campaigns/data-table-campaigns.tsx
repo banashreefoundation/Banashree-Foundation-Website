@@ -1,4 +1,5 @@
 "use client";
+
 import {
   ColumnDef,
   flexRender,
@@ -7,7 +8,6 @@ import {
   getPaginationRowModel,
   SortingState,
   getSortedRowModel,
-  // getPaginationState,
 } from "@tanstack/react-table";
 import {
   Table,
@@ -17,72 +17,265 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import SharedModal from "@/components/ui/modal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import {
+  createCampaign,
+  deleteCampaignById,
+  getAllCampaigns,
+  getAllPrograms,
+  getProjectById,
+} from "../Common/dataFetchFunctions";
+
+import AddCampaign from "./AddCampaign";
 import { Campaigns } from "./columns";
-import Modal from "./Modal";
-import { view, edit, deleteIcon, plusWhite, leftArrow, arrow } from "@/utils/icons";
+
+/* ---------------- Loading ---------------- */
+const LoadingSpinner = () => (
+  <div className="flex justify-center items-center h-32">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
+  </div>
+);
 
 interface DataTableProps {
   columnsCamp: ColumnDef<Campaigns>[];
-  data: Campaigns[];
   isDashboard?: boolean;
 }
 
 export function DataTableCampaigns({
   columnsCamp,
-  data,
   isDashboard = false,
 }: DataTableProps) {
+  /* ================= FORM DATA ================= */
+  const [formData, setFormData] = useState({
+    campaignName: "",
+    tagline: "",
+    program: "",
+    project: "",
+    startDate: "",
+    startTime: "",
+    endDate: "",
+    endTime: "",
+    description: "",
+    goal: "",
+    story: "",
+    breakdown: "",
+    impact: "",
+    timeline: "",
+    beneficiary: "",
+    campaignUpdates: "",
+    ctaName: "Donate",
+    ctaLink: "",
+    socialShare: "",
+    taxBenefit: "",
+    panName: "",
+    panNumber: "",
+    address: "",
+    endorsement: "",
+  });
+
+  /* ================= DROPDOWN DATA ================= */
+  const [programs, setPrograms] = useState<any[]>([]);
+  const [projects, setProjects] = useState<any[]>([]);
+
+  const [errors, setErrors] = useState<any>({});
+  const [data, setData] = useState<Campaigns[]>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<Campaigns | null>(null);
-
-  // Pagination state
   const [pageIndex, setPageIndex] = useState(0);
-  const [pageSize, setPageSize] = useState(5); // Number of items per page
+  const [pageSize, setPageSize] = useState(15);
+  const [loading, setLoading] = useState(true);
+  const [selectedRowData, setSelectedRowData] = useState<Campaigns>();
 
-  // Fetch campaign data from API
-  const [campaigns, setCampaigns] = useState<Campaigns[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState({
+    isAddModalOpen: false,
+    isDeleteModalOpen: false,
+  });
 
+  const handleOpenModal = (modalType: string, isOpen: boolean) => {
+    setIsModalOpen((prev) => ({ ...prev, [modalType]: isOpen }));
+  };
+
+  /* ================= RESET FORM ================= */
+  const resetProgramForm = () => {
+    setFormData({
+      campaignName: "",
+      tagline: "",
+      program: "",
+      project: "",
+      startDate: "",
+      startTime: "",
+      endDate: "",
+      endTime: "",
+      description: "",
+      goal: "",
+      story: "",
+      breakdown: "",
+      impact: "",
+      timeline: "",
+      beneficiary: "",
+      campaignUpdates: "",
+      ctaName: "Donate",
+      ctaLink: "",
+      socialShare: "",
+      taxBenefit: "",
+      panName: "",
+      panNumber: "",
+      address: "",
+      endorsement: "",
+    });
+    setProjects([]);
+    setErrors({});
+  };
+
+  /* ================= VALIDATION ================= */
+  const validateForm = () => {
+    const newErrors: any = {};
+
+    if (!formData.campaignName.trim())
+      newErrors.campaignName = "Campaign Name is required";
+    if (!formData.tagline.trim())
+      newErrors.tagline = "Tag Line is required";
+    if (!formData.program)
+      newErrors.program = "Program is required";
+    if (!formData.description.trim())
+      newErrors.description = "Description is required";
+    if (!formData.goal.trim())
+      newErrors.goal = "Goal is required";
+    if (!formData.ctaLink.trim())
+      newErrors.ctaLink = "CTA Link is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  /* ================= FETCH PROGRAMS ================= */
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      if (!isModalOpen.isAddModalOpen) return;
+
+      try {
+        const res = await getAllPrograms();
+        setPrograms(res || []);
+      } catch (err) {
+        console.error("Error fetching programs", err);
+      }
+    };
+
+    fetchPrograms();
+  }, [isModalOpen.isAddModalOpen]);
+
+  /* ================= FETCH PROJECTS (ON PROGRAM CHANGE) ================= */
+  useEffect(() => {
+    const fetchProjects = async () => {
+      if (!formData.program) {
+        setProjects([]);
+        return;
+      }
+
+      try {
+        const res = await getProjectById(formData.program);
+
+        if (!res || res.length === 0) {
+          setProjects([]);
+          toast.error("No projects available for the selected program");
+          return;
+        }
+
+        setProjects(res);
+      } catch (err) {
+        setProjects([]);
+        toast.error("Failed to load projects for selected program");
+        console.error("Error fetching projects", err);
+      }
+    };
+
+    fetchProjects();
+  }, [formData.program]);
+
+  /* ================= ADD CAMPAIGN ================= */
+  const handleAddCampaign = async (data: any) => {
+    if (!validateForm()) return;
+
+    const payload = {
+      title: data.campaignName,
+      tagline: data.tagline,
+      program: data.program,
+      project: data.project,
+      detailedDescription: data.description,
+      goals: data.goal,
+      story: data.story,
+      breakdown: data.breakdown,
+      impact: data.impact,
+      timeline: data.timeline,
+      beneficiary: data.beneficiary,
+      campaignUpdates: data.campaignUpdates,
+      cta: {
+        name: data.ctaName,
+        link: data.ctaLink,
+      },
+      socialShare: data.socialShare === "yes",
+      taxBenefit: data.taxBenefit === "yes",
+      panDetails:
+        data.taxBenefit === "yes"
+          ? {
+              name: data.panName,
+              number: data.panNumber,
+              address: data.address,
+            }
+          : null,
+      endorsement: data.endorsement,
+    };
+
+    const response = await createCampaign(payload);
+
+    if (response) {
+      toast.success("Campaign created successfully.");
+      handleOpenModal("isAddModalOpen", false);
+      resetProgramForm();
+    } else {
+      toast.error("Failed to create campaign.");
+    }
+  };
+
+  /* ================= DELETE ================= */
+  const handleDeleteProgram = async () => {
+    if (!selectedRowData) return;
+    await deleteCampaignById(selectedRowData["_id"]);
+    toast.success("Campaign deleted successfully.");
+    setLoading(false);
+  };
+
+  /* ================= FETCH CAMPAIGNS ================= */
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-        const response = await fetch("http://localhost:4001/api/v1/campaigns");
-        const campaignData = await response.json();
-        if (campaignData.success) {
-          setCampaigns(campaignData.data);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+        const allCampaigns = await getAllCampaigns();
+        setData(isDashboard ? allCampaigns.slice(0, 5) : allCampaigns);
+      } catch (e) {
+        console.error(e);
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
-  }, []);
+  }, [isModalOpen, isDashboard]);
 
-  useEffect(() => {
-    console.log('Campaign data state:', campaigns); // Debugging: Log state update
-  }, [campaigns]);
-
-
-  const handleView = (rowData: Campaigns) => {
-    setModalContent(rowData);
-    setIsModalOpen(true);
-  };
-
-  const handleDelete = (rowData: Campaigns) => {
-    console.log("Deleting:", rowData);
-  };
-
+  /* ================= TABLE ================= */
   const table = useReactTable({
-    data: campaigns,
+    data,
     columns: columnsCamp.map((column) => ({
       ...column,
-      meta: { handleView, handleDelete }, // Set meta for every column
+      meta: {
+        handleView: (row: Campaigns) => console.log("View", row),
+        handleEdit: (row: Campaigns) => console.log("Edit", row),
+        handleDelete: (row: Campaigns) => {
+          setSelectedRowData(row);
+          handleOpenModal("isDeleteModalOpen", true);
+        },
+      },
     })),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -90,57 +283,45 @@ export function DataTableCampaigns({
     getSortedRowModel: getSortedRowModel(),
     state: {
       sorting,
-      pagination: { pageIndex, pageSize }, // Add pagination state
+      pagination: { pageIndex, pageSize },
     },
     onPaginationChange: (updater) => {
-      const nextState = updater({ pageIndex, pageSize });
-      setPageIndex(nextState.pageIndex);
-      setPageSize(nextState.pageSize);
+      const next = updater({ pageIndex, pageSize });
+      setPageIndex(next.pageIndex);
+      setPageSize(next.pageSize);
     },
   });
 
+  /* ================= RENDER ================= */
   return (
     <>
       <div className="bg-white mt-12 rounded-md border shadow-lg">
+
         {!isDashboard && (
           <div className="flex justify-between items-center p-4">
-            <div className="flex items-center space-x-2">
-              <img
-                src={leftArrow}
-                alt="Icon"
-                className="w-6 h-6"
-              />
-              <h2 className="text-xl font-semibold">Campaigns</h2>
-            </div>
-            <div className="flex items-center space-x-2 w-full max-w-sm">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full px-4 py-2 rounded border"
-              />
-              <button className="flex items-center justify-center py-2 text-white rounded px-4 w-full btn">
-                <img
-                  src={plusWhite}
-                  className="w-6 h-6 mr-2"
-                />
-                Add New
-              </button>
-            </div>
+            <h2 className="text-xl font-semibold">Campaigns</h2>
+            <button
+              className="flex items-center px-4 py-2 text-white rounded btn"
+              onClick={() => handleOpenModal("isAddModalOpen", true)}
+            >
+              + Add New
+            </button>
           </div>
         )}
-        <div className="h-full flex flex-col">
+
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
           <Table>
             <TableHeader>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <TableHead className="tableheadings" key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+              {table.getHeaderGroups().map((hg) => (
+                <TableRow key={hg.id}>
+                  {hg.headers.map((header) => (
+                    <TableHead key={header.id}>
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                     </TableHead>
                   ))}
                 </TableRow>
@@ -148,12 +329,8 @@ export function DataTableCampaigns({
             </TableHeader>
             <TableBody>
               {table.getRowModel().rows.length ? (
-                table.getRowModel().rows.map((row, index) => (
-                  <TableRow
-                    key={row.id}
-                    data-state={row.getIsSelected() && "selected"}
-                    className={index % 2 === 0 ? "bg-[#FDEBE8]" : "bg-white"}
-                  >
+                table.getRowModel().rows.map((row) => (
+                  <TableRow key={row.id}>
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
                         {flexRender(
@@ -166,73 +343,51 @@ export function DataTableCampaigns({
                 ))
               ) : (
                 <TableRow>
-                  <TableCell
-                    colSpan={columnsCamp.length}
-                    className="h-24 text-center"
-                  >
-                    Data table for Campaigns... No results.
+                  <TableCell colSpan={columnsCamp.length} className="text-center">
+                    No results.
                   </TableCell>
                 </TableRow>
               )}
             </TableBody>
           </Table>
+        )}
 
-          {/* Pagination Controls */}
-          {!isDashboard && (
-            <div className="flex justify-between items-center p-4">
-              <button
-                onClick={() => table.setPageIndex(0)}
-                disabled={!table.getCanPreviousPage()}
-                className="px-4 py-2 text-white bg-blue-500 rounded disabled:bg-gray-400 btn"
-              >
-                First
-              </button>
-              <button
-                onClick={() => table.previousPage()}
-                disabled={!table.getCanPreviousPage()}
-                className="px-4 py-2 text-white bg-blue-500 rounded disabled:bg-gray-400 btn"
-              >
-                Previous
-              </button>
-              <span>
-                Page {table.getState().pagination.pageIndex + 1} of{" "}
-                {table.getPageCount()}
-              </span>
-              <button
-                onClick={() => table.nextPage()}
-                disabled={!table.getCanNextPage()}
-                className="px-4 py-2 text-white bg-blue-500 rounded disabled:bg-gray-400 btn"
-              >
-                Next
-              </button>
-              <button
-                onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-                disabled={!table.getCanNextPage()}
-                className="px-4 py-2 text-white bg-blue-500 rounded disabled:bg-gray-400 btn"
-              >
-                Last
-              </button>
-
-              <select
-                value={pageSize}
-                onChange={(e) => setPageSize(Number(e.target.value))}
-                className="px-4 py-2 rounded border"
-              >
-                {[5, 10, 20, 30, 40, 50].map((size) => (
-                  <option key={size} value={size}>
-                    Show {size}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-        </div>
+        <ToastContainer />
       </div>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        content={modalContent ? modalContent : <p>No content available.</p>}
-      />
+
+      {/* ADD MODAL */}
+      <SharedModal
+        title="Add New Campaign"
+        action="Add"
+        cancel="Cancel"
+        open={isModalOpen.isAddModalOpen}
+        handleClose={() => handleOpenModal("isAddModalOpen", false)}
+        actionCallback={() => handleAddCampaign(formData)}
+        validateForm={validateForm}
+      >
+        <AddCampaign
+          formData={formData}
+          setFormData={setFormData}
+          errors={errors}
+          setErrors={setErrors}
+          programs={programs}
+          projects={projects}
+        />
+      </SharedModal>
+
+      {/* DELETE MODAL */}
+      <SharedModal
+        title="Alert"
+        action="Yes"
+        open={isModalOpen.isDeleteModalOpen}
+        handleClose={() => handleOpenModal("isDeleteModalOpen", false)}
+        actionCallback={handleDeleteProgram}
+        skipValidation
+      >
+        <div className="text-center p-6">
+          Do you really want to delete this Campaign?
+        </div>
+      </SharedModal>
     </>
   );
 }
